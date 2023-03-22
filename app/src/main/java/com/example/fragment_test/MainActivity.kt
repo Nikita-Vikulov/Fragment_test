@@ -1,6 +1,7 @@
 package com.example.fragment_test
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -10,11 +11,13 @@ import com.example.fragment2.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity(), INavigation {
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
+    private val dataModel: DataModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        dataModel.messageAuth.observe(this) {}
     }
 
     private fun setupFragment(fragment: Fragment) {
@@ -42,7 +45,7 @@ class MainActivity : AppCompatActivity(), INavigation {
         setupFragment(SettingsFragment())
     }
 
-    override fun clearBackStack(){
+    override fun clearBackStack() {
         supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 }
