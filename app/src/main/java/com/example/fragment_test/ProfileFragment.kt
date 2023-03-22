@@ -2,28 +2,19 @@ package com.example.fragment_test
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
 import com.bumptech.glide.Glide
 import com.example.fragment2.R
 import com.example.fragment2.databinding.ProfileFragmentBinding
 
-class ProfileFragment : Fragment() {
-    private var _binding: ProfileFragmentBinding? = null
-    private val binding get() = _binding!!
+class ProfileFragment : BaseFragment<ProfileFragmentBinding>() {
+
     private lateinit var listener: INavigation
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = ProfileFragmentBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override fun getViewBinding(container: ViewGroup?): ProfileFragmentBinding =
+        ProfileFragmentBinding.inflate(layoutInflater, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

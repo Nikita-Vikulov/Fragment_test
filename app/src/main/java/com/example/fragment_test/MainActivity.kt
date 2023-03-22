@@ -8,7 +8,6 @@ import com.example.fragment2.R
 import com.example.fragment2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), INavigation {
-
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
 
