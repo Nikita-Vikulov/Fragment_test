@@ -1,4 +1,4 @@
-package com.example.fragment2
+package com.example.fragment_test
 
 import android.content.Context
 import android.os.Bundle
@@ -6,10 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.setFragmentResultListener
 import com.bumptech.glide.Glide
+import com.example.fragment2.R
 import com.example.fragment2.databinding.ProfileFragmentBinding
 
 class ProfileFragment : Fragment() {
@@ -32,10 +31,6 @@ class ProfileFragment : Fragment() {
         binding.buttonSettings.setOnClickListener {
             listener.openSettingsFragment()
         }
-    }
-
-    fun FragmentActivity.clearFragmentsFromContainer() {
-
     }
 
     private fun init() {

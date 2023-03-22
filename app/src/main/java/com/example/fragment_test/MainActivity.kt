@@ -1,9 +1,10 @@
-package com.example.fragment2
+package com.example.fragment_test
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.example.fragment2.R
 import com.example.fragment2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), INavigation {
