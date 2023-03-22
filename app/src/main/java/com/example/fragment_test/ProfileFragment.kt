@@ -4,13 +4,14 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.setFragmentResultListener
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleOwner
 import com.bumptech.glide.Glide
 import com.example.fragment2.R
 import com.example.fragment2.databinding.ProfileFragmentBinding
 
 class ProfileFragment : BaseFragment<ProfileFragmentBinding>() {
-
+    private val dataModel: DataModel by activityViewModels()
     private lateinit var listener: INavigation
 
     override fun getViewBinding(container: ViewGroup?): ProfileFragmentBinding =
@@ -25,15 +26,15 @@ class ProfileFragment : BaseFragment<ProfileFragmentBinding>() {
     }
 
     private fun init() {
-        setFragmentResultListener("requestLogin") { key, bundle ->
-            val userAuthorization = bundle.getStringArrayList("bundleLogin")
-            binding.tvLogin.text = userAuthorization?.get(0)
-            binding.tvPassword.text = userAuthorization?.get(1)
+        dataModel.messageAuth.observe(activity as LifecycleOwner) {
+            val messageAuth = it
+            binding.tvLogin.text = messageAuth?.get(0)
+            binding.tvPassword.text = messageAuth?.get(1)
         }
-        setFragmentResultListener("requestSettings") { key, bundle ->
-            val userSettings = bundle.getStringArrayList("bundleSettings")
-            binding.tvName.text = userSettings?.get(0)
-            binding.tvSurname.text = userSettings?.get(1)
+        dataModel.messageSett.observe(activity as LifecycleOwner) {
+            val messageSett = it
+            binding.tvName.text = messageSett?.get(0)
+            binding.tvSurname.text = messageSett?.get(1)
         }
         Glide.with(this)
             .load("https://mykaleidoscope.ru/x/uploads/posts/2022-09/1663200138_15-mykaleidoscope-ru-p-veselii-tyulen-pinterest-15.jpg")

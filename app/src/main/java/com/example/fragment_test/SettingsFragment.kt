@@ -4,14 +4,13 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.activityViewModels
 import com.example.fragment2.databinding.SettingsFragmentBinding
 
 class SettingsFragment : BaseFragment<SettingsFragmentBinding>() {
 
     private lateinit var listener: INavigation
-
+    private val dataModel: DataModel by activityViewModels()
     override fun getViewBinding(container: ViewGroup?): SettingsFragmentBinding =
         SettingsFragmentBinding.inflate(layoutInflater, container, false)
 
@@ -21,8 +20,8 @@ class SettingsFragment : BaseFragment<SettingsFragmentBinding>() {
         binding.buttonSave.setOnClickListener {
             val name = binding.etName.text.toString()
             val surname = binding.etSurname.text.toString()
-            val userSettings: ArrayList<String> = arrayListOf(name, surname)
-            setFragmentResult("requestSettings", bundleOf("bundleSettings" to userSettings))
+            val message: ArrayList<String> = arrayListOf(name, surname)
+            dataModel.messageSett.value = message
             listener.openProfileFragment()
         }
     }
