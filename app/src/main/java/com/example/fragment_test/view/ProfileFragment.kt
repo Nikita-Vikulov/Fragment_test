@@ -6,16 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.fragment2.R
 import com.example.fragment2.databinding.ProfileFragmentBinding
 import com.example.fragment_test.BaseFragment
 import com.example.fragment_test.DataModel
-import com.example.fragment_test.INavigation
 
 class ProfileFragment : BaseFragment<ProfileFragmentBinding>() {
     private val dataModel: DataModel by activityViewModels()
-    private lateinit var listener: INavigation
 
     override fun getViewBinding(container: ViewGroup?): ProfileFragmentBinding =
         ProfileFragmentBinding.inflate(layoutInflater, container, false)
@@ -24,13 +23,13 @@ class ProfileFragment : BaseFragment<ProfileFragmentBinding>() {
         super.onViewCreated(view, savedInstanceState)
         init()
         binding.buttonSettings.setOnClickListener {
-            listener.openSettingsFragment()
+            findNavController().navigate(R.id.action_profileFragment_to_settingsFragment)
         }
         binding.buttonCalendar.setOnClickListener {
-            listener.openCalendarFragment()
+            findNavController().navigate(R.id.action_profileFragment_to_calendarFragment)
         }
         binding.buttonDescription.setOnClickListener{
-            listener.openDescriptionFragment()
+            findNavController().navigate(R.id.action_profileFragment_to_descriptionFragment)
         }
     }
 
@@ -60,8 +59,5 @@ class ProfileFragment : BaseFragment<ProfileFragmentBinding>() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is INavigation) {
-            listener = context
-        }
     }
 }
