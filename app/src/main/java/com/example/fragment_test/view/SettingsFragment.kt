@@ -1,4 +1,4 @@
-package com.example.fragment_test
+package com.example.fragment_test.view
 
 import android.content.Context
 import android.os.Bundle
@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.fragment2.databinding.SettingsFragmentBinding
+import com.example.fragment_test.BaseFragment
+import com.example.fragment_test.DataModel
+import com.example.fragment_test.INavigation
 
 class SettingsFragment : BaseFragment<SettingsFragmentBinding>() {
 
@@ -35,7 +38,7 @@ class SettingsFragment : BaseFragment<SettingsFragmentBinding>() {
 
     override fun onDestroy() {
         super.onDestroy()
-        listener.clearBackStack()
+       // listener.clearBackStack()
     }
 
 }

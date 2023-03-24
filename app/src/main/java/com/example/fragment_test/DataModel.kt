@@ -11,4 +11,10 @@ open class DataModel : ViewModel() {
     val messageSett: MutableLiveData<ArrayList<String>> by lazy {
         MutableLiveData<ArrayList<String>>()
     }
+    val messageDesc: MutableLiveData<String> by lazy{
+        MutableLiveData<String>()
+    }
+    val messageDate: MutableLiveData<String> by lazy {
+        MutableLiveData<String>()
+    }
 }

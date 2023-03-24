@@ -1,4 +1,4 @@
-package com.example.fragment_test
+package com.example.fragment_test.view
 
 import android.content.Context
 import android.os.Bundle
@@ -9,6 +9,9 @@ import androidx.lifecycle.LifecycleOwner
 import com.bumptech.glide.Glide
 import com.example.fragment2.R
 import com.example.fragment2.databinding.ProfileFragmentBinding
+import com.example.fragment_test.BaseFragment
+import com.example.fragment_test.DataModel
+import com.example.fragment_test.INavigation
 
 class ProfileFragment : BaseFragment<ProfileFragmentBinding>() {
     private val dataModel: DataModel by activityViewModels()
@@ -23,6 +26,12 @@ class ProfileFragment : BaseFragment<ProfileFragmentBinding>() {
         binding.buttonSettings.setOnClickListener {
             listener.openSettingsFragment()
         }
+        binding.buttonCalendar.setOnClickListener {
+            listener.openCalendarFragment()
+        }
+        binding.buttonDescription.setOnClickListener{
+            listener.openDescriptionFragment()
+        }
     }
 
     private fun init() {
@@ -35,6 +44,12 @@ class ProfileFragment : BaseFragment<ProfileFragmentBinding>() {
             val messageSett = it
             binding.tvName.text = messageSett?.get(0)
             binding.tvSurname.text = messageSett?.get(1)
+        }
+        dataModel.messageDesc.observe(activity as LifecycleOwner){
+            binding.tvDescription.text = it
+        }
+        dataModel.messageDate.observe(activity as LifecycleOwner){
+            binding.tvDate.text = it
         }
         Glide.with(this)
             .load("https://mykaleidoscope.ru/x/uploads/posts/2022-09/1663200138_15-mykaleidoscope-ru-p-veselii-tyulen-pinterest-15.jpg")
