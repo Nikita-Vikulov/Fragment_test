@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.fragment2.databinding.DescriptionFragmentBinding
 import com.example.fragment_test.BaseFragment
+import com.example.fragment_test.DESCRIPTION
 import com.example.fragment_test.DataModel
 import com.example.fragment_test.INavigation
 
@@ -32,5 +33,10 @@ class DescriptionFragment:BaseFragment<DescriptionFragmentBinding>() {
         if (context is INavigation) {
             listener = context
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        listener.clearBackStack(DESCRIPTION)
     }
 }

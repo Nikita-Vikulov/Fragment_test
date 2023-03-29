@@ -27,33 +27,33 @@ class MainActivity : AppCompatActivity(), INavigation {
     }
 
     override fun openLoginFragment() {
-        setupFragment(LoginFragment())
+        setupFragment(LoginFragment(), LOGIN)
     }
 
     override fun openProfileFragment() {
-        setupFragment(ProfileFragment())
+        setupFragment(ProfileFragment(), PROFILE)
     }
 
     override fun openDescriptionFragment() {
-        setupFragment(DescriptionFragment())
+        setupFragment(DescriptionFragment(), DESCRIPTION)
     }
 
     override fun openCalendarFragment() {
-        setupFragment(CalendarFragment())
+        setupFragment(CalendarFragment(), CALENDAR)
     }
 
     override fun openSettingsFragment() {
-        setupFragment(SettingsFragment())
+        setupFragment(SettingsFragment(), SETTINGS)
     }
 
-    override fun clearBackStack() {
-        supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+    override fun clearBackStack(name: String) {
+        supportFragmentManager.popBackStack(name, FragmentManager.POP_BACK_STACK_INCLUSIVE)
     }
 
-    private fun setupFragment(fragment: Fragment) {
+    private fun setupFragment(fragment: Fragment, name: String?) {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fl_fragment, fragment)
-            addToBackStack(null)
+            addToBackStack(name)
             commit()
         }
     }

@@ -6,6 +6,5 @@ interface INavigation {
     fun openSettingsFragment()
     fun openDescriptionFragment()
     fun openCalendarFragment()
-    fun clearBackStack()
-
+    fun clearBackStack(name: String)
 }

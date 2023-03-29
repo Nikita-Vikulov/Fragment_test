@@ -9,6 +9,7 @@ import com.example.fragment2.databinding.LoginFragmentBinding
 import com.example.fragment_test.BaseFragment
 import com.example.fragment_test.DataModel
 import com.example.fragment_test.INavigation
+import com.example.fragment_test.LOGIN
 
 class LoginFragment : BaseFragment<LoginFragmentBinding>() {
     private lateinit var listener: INavigation
@@ -33,5 +34,10 @@ class LoginFragment : BaseFragment<LoginFragmentBinding>() {
         if (context is INavigation) {
             listener = context
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        listener.clearBackStack(LOGIN)
     }
 }

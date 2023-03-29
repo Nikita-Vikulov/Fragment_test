@@ -9,6 +9,7 @@ import com.example.fragment2.databinding.SettingsFragmentBinding
 import com.example.fragment_test.BaseFragment
 import com.example.fragment_test.DataModel
 import com.example.fragment_test.INavigation
+import com.example.fragment_test.SETTINGS
 
 class SettingsFragment : BaseFragment<SettingsFragmentBinding>() {
 
@@ -36,9 +37,9 @@ class SettingsFragment : BaseFragment<SettingsFragmentBinding>() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-       // listener.clearBackStack()
+    override fun onStop() {
+        super.onStop()
+        listener.clearBackStack(SETTINGS)
     }
 
 }

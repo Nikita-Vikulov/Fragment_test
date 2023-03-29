@@ -7,10 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.fragment2.databinding.CalendarFragmentBinding
-import com.example.fragment2.databinding.DescriptionFragmentBinding
-import com.example.fragment_test.BaseFragment
-import com.example.fragment_test.DataModel
-import com.example.fragment_test.INavigation
+import com.example.fragment_test.*
 import java.text.SimpleDateFormat
 
 class CalendarFragment:BaseFragment<CalendarFragmentBinding>() {
@@ -36,5 +33,10 @@ class CalendarFragment:BaseFragment<CalendarFragmentBinding>() {
         if (context is INavigation) {
             listener = context
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        listener.clearBackStack(CALENDAR)
     }
 }
