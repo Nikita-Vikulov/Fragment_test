@@ -8,7 +8,6 @@ import androidx.fragment.app.activityViewModels
 import com.example.fragment2.databinding.SettingsFragmentBinding
 import com.example.fragment_test.BaseFragment
 import com.example.fragment_test.DataModel
-import com.example.fragment_test.INavigation
 import com.example.fragment_test.SETTINGS
 
 class SettingsFragment : BaseFragment<SettingsFragmentBinding>() {

@@ -8,12 +8,17 @@ import androidx.fragment.app.activityViewModels
 import com.example.fragment2.databinding.LoginFragmentBinding
 import com.example.fragment_test.BaseFragment
 import com.example.fragment_test.DataModel
-import com.example.fragment_test.INavigation
 import com.example.fragment_test.LOGIN
+import com.example.fragment_test.MyNavigator
+import com.github.terrakok.cicerone.Navigator
 
-class LoginFragment : BaseFragment<LoginFragmentBinding>() {
-    private lateinit var listener: INavigation
+class LoginFragment(private val myParam: String) : BaseFragment<LoginFragmentBinding>() {
+    val fragment = LoginFragment("my_param_value")
     private val dataModel: DataModel by activityViewModels()
+
+    private val navigator: Navigator by lazy {
+        MyNavigator(this)
+    }
     override fun getViewBinding(container: ViewGroup?): LoginFragmentBinding =
         LoginFragmentBinding.inflate(layoutInflater, container, false)
 

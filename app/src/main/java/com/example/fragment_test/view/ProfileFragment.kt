@@ -11,7 +11,6 @@ import com.example.fragment2.R
 import com.example.fragment2.databinding.ProfileFragmentBinding
 import com.example.fragment_test.BaseFragment
 import com.example.fragment_test.DataModel
-import com.example.fragment_test.INavigation
 
 class ProfileFragment : BaseFragment<ProfileFragmentBinding>() {
     private val dataModel: DataModel by activityViewModels()
